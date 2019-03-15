@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:ExpensesApp.Effects"
+             x:Class="ExpensesApp.Views.ExpensesAddPage">
+    
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Text="{Binding ExpensesName,Mode=TwoWay}" Placeholder="Expenses Name"/>
+            <Entry Text="{Binding Amount,Mode=TwoWay}"  Placeholder="Amount"/>
+            <Entry Text="{Binding ShortDescription,Mode=TwoWay}" Placeholder="Short Description"/>
+            <DatePicker Date="{Binding UpdateSourceEventName,Mode=TwoWay}">
+                <DatePicker.Effects>
+                    <local:SelectedEffect/>
+                </DatePicker.Effects>
+                </DatePicker>
+
+            <Picker 
+                            Title="Select Expense Type"
+                            ItemsSource="{Binding expenseTypesList}"
+                            ItemDisplayBinding="{Binding Type,Mode=TwoWay}"
+                 
+                SelectedItem="{Binding ExpenseType,Mode=TwoWay}">
+                <Picker.Effects>
+                    <local:SelectedEffect/>
+                </Picker.Effects>
+            </Picker>
+
+
+            <Button BackgroundColor="Blue"  Text="Save" Command="{Binding saveExpensesComand}" CommandParameter="{Binding Expenses}" /> 
+        </StackLayout>
+    </ContentPage.Content>
+    </ContentPage>
